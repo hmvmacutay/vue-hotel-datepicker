@@ -1092,11 +1092,12 @@ export default {
     },
     handleClickOutside(event) {
       const ignoreClickOnMeElement = this.$refs[`DatePicker-${this.hash}`]
+      const shouldCloseOnClickOutside = this.closeDatepickerOnClickOutside
 
       if (ignoreClickOnMeElement) {
         const isClickInsideElement = ignoreClickOnMeElement.contains(event.target)
 
-        if (!isClickInsideElement) {
+        if (!isClickInsideElement && shouldCloseOnClickOutside) {
           this.hideDatepicker()
         }
       }
